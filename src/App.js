@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CompteList from './components/CompteList';
 import CompteForm from './components/CompteForm';
 
 function App() {
+  const [refresh, setRefresh] = useState(false);
+
+  const triggerRefresh = () => setRefresh(!refresh);
+
   return (
     <div>
-      <CompteForm />
-      <CompteList />
+      <CompteForm onAdd={triggerRefresh} />
+      <CompteList refresh={refresh} />
     </div>
   );
 }
